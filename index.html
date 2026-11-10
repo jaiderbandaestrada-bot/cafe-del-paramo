@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Café del Páramo: cafetería de especialidad. Conoce nuestro menú, arma tu pedido y reserva tu mesa.">
+    <title>Café del Páramo | Café de especialidad</title>
+    <link rel="icon" type="image/svg+xml" href="recursos/img/favicon.svg">
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+    <!-- ===================== ENCABEZADO + MENÚ ===================== -->
+    <header id="encabezado">
+        <div class="contenedor barra">
+            <a class="logo" href="#inicio">
+                <img src="recursos/img/logo.svg" alt="" width="42" height="42">
+                <span>Café del Páramo</span>
+            </a>
+
+            <button id="btn-menu" class="btn-icono btn-menu" type="button"
+                    aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal">
+                <span class="barras"></span>
+            </button>
+
+            <nav id="menu-principal" aria-label="Navegación principal">
+                <ul>
+                    <li><a class="enlace-menu activo" href="#inicio">Inicio</a></li>
+                    <li><a class="enlace-menu" href="#nosotros">Nosotros</a></li>
+                    <li><a class="enlace-menu" href="#menu">Menú</a></li>
+                    <li><a class="enlace-menu" href="#reservas">Reservas</a></li>
+                    <li><a class="enlace-menu" href="#preguntas">Preguntas</a></li>
+                    <li><a class="enlace-menu enlace-pedido" href="#pedido">Mi pedido <span id="contador" class="contador">0</span></a></li>
+                </ul>
+            </nav>
+
+            <button id="btn-tema" class="btn-icono" type="button" aria-label="Cambiar entre tema claro y oscuro">🌙</button>
+        </div>
+    </header>
+
+    <main id="contenido">
+
+        <!-- ===================== INICIO ===================== -->
+        <section id="inicio" class="hero">
+            <div class="contenedor hero-grid">
+                <div class="hero-texto">
+                    <p class="etiqueta">Café de especialidad</p>
+                    <h1>El sabor de la montaña, en cada taza</h1>
+                    <p>Granos de origen colombiano, tostados en pequeños lotes y preparados al momento.
+                       Ven a probarlos o arma tu pedido desde aquí.</p>
+                    <div class="grupo-botones">
+                        <a class="btn btn-principal" href="#menu">Ver el menú</a>
+                        <button id="btn-sorpresa" class="btn btn-secundario" type="button">☕ Sorpréndeme</button>
+                    </div>
+                    <p id="mensaje-sorpresa" class="mensaje-sorpresa" aria-live="polite"></p>
+                </div>
+                <img class="hero-imagen" src="recursos/img/hero.svg"
+                     alt="Taza de café frente a las montañas del páramo" width="600" height="500">
+            </div>
+
+            <div class="contenedor datos">
+                <article class="dato">
+                    <strong class="cifra" data-meta="12">0</strong>
+                    <span>años de experiencia</span>
+                </article>
+                <article class="dato">
+                    <strong class="cifra" data-meta="6">0</strong>
+                    <span>productos en el menú</span>
+                </article>
+                <article class="dato">
+                    <strong class="cifra" data-meta="3500">0</strong>
+                    <span>tazas servidas al mes</span>
+                </article>
+            </div>
+        </section>
+
+        <!-- ===================== NOSOTROS ===================== -->
+        <section id="nosotros" class="seccion">
+            <div class="contenedor">
+                <h2>Nuestra historia</h2>
+                <p class="subtitulo">Una cafetería pensada para quienes disfrutan el café con calma.</p>
+
+                <div class="grid-info">
+                    <article class="tarjeta">
+                        <img src="recursos/iconos/origen.svg" alt="" width="64" height="64">
+                        <h3>Origen</h3>
+                        <p>Trabajamos con pequeños productores de las montañas colombianas y pagamos precios justos.</p>
+                    </article>
+                    <article class="tarjeta">
+                        <img src="recursos/iconos/tueste.svg" alt="" width="64" height="64">
+                        <h3>Tueste</h3>
+                        <p>Tostamos en lotes pequeños para conservar el aroma y las notas propias de cada grano.</p>
+                    </article>
+                    <article class="tarjeta">
+                        <img src="recursos/iconos/taza.svg" alt="" width="64" height="64">
+                        <h3>Preparación</h3>
+                        <p>Cada bebida se prepara al momento por baristas que cuidan la molienda, la temperatura y el tiempo.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== MENÚ + PEDIDO ===================== -->
+        <section id="menu" class="seccion seccion-alterna">
+            <div class="contenedor">
+                <h2>Nuestro menú</h2>
+                <p class="subtitulo">Filtra por categoría y agrega tus favoritos al pedido.</p>
+
+                <div class="filtros" role="group" aria-label="Filtrar productos por categoría">
+                    <button class="btn-filtro activo" type="button" data-filtro="todos">Todos</button>
+                    <button class="btn-filtro" type="button" data-filtro="calientes">Calientes</button>
+                    <button class="btn-filtro" type="button" data-filtro="frias">Frías</button>
+                    <button class="btn-filtro" type="button" data-filtro="panaderia">Panadería</button>
+                    <button class="btn-filtro" type="button" data-filtro="postres">Postres</button>
+                </div>
+
+                <div class="menu-layout">
+                    <div class="grid-menu" id="grid-menu">
+
+                        <article class="producto" data-categoria="calientes" data-nombre="Espresso" data-precio="6000">
+                            <img src="recursos/img/espresso.svg" alt="Taza de espresso" width="400" height="300" loading="lazy">
+                            <div class="producto-info">
+                                <h3>Espresso</h3>
+                                <p>Intenso, con crema espesa y final dulce.</p>
+                                <div class="producto-pie">
+                                    <span class="precio">$6.000</span>
+                                    <button class="btn btn-agregar" type="button">Agregar</button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="producto" data-categoria="calientes" data-nombre="Capuchino" data-precio="9500">
+                            <img src="recursos/img/capuchino.svg" alt="Taza de capuchino con espuma" width="400" height="300" loading="lazy">
+                            <div class="producto-info">
+                                <h3>Capuchino</h3>
+                                <p>Espresso, leche vaporizada y una capa de espuma suave.</p>
+                                <div class="producto-pie">
+                                    <span class="precio">$9.500</span>
+                                    <button class="btn btn-agregar" type="button">Agregar</button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="producto" data-categoria="calientes" data-nombre="Latte" data-precio="10500">
+                            <img src="recursos/img/latte.svg" alt="Vaso de café latte en capas" width="400" height="300" loading="lazy">
+                            <div class="producto-info">
+                                <h3>Latte</h3>
+                                <p>Cremoso y balanceado, con más leche y menos intensidad.</p>
+                                <div class="producto-pie">
+                                    <span class="precio">$10.500</span>
+                                    <button class="btn btn-agregar" type="button">Agregar</button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="producto" data-categoria="frias" data-nombre="Cold Brew" data-precio="11000">
+                            <img src="recursos/img/coldbrew.svg" alt="Vaso de cold brew con hielo" width="400" height="300" loading="lazy">
+                            <div class="producto-info">
+                                <h3>Cold Brew</h3>
+                                <p>Café extraído en frío durante 18 horas, suave y refrescante.</p>
+                                <div class="producto-pie">
+                                    <span class="precio">$11.000</span>
+                                    <button class="btn btn-agregar" type="button">Agregar</button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="producto" data-categoria="panaderia" data-nombre="Croissant" data-precio="7500">
+                            <img src="recursos/img/croissant.svg" alt="Croissant dorado" width="400" height="300" loading="lazy">
+                            <div class="producto-info">
+                                <h3>Croissant</h3>
+                                <p>Hojaldrado y de mantequilla, horneado cada mañana.</p>
+                                <div class="producto-pie">
+                                    <span class="precio">$7.500</span>
+                                    <button class="btn btn-agregar" type="button">Agregar</button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="producto" data-categoria="postres" data-nombre="Torta de chocolate" data-precio="12000">
+                            <img src="recursos/img/torta.svg" alt="Porción de torta de chocolate" width="400" height="300" loading="lazy">
+                            <div class="producto-info">
+                                <h3>Torta de chocolate</h3>
+                                <p>Húmeda, con relleno de crema y cobertura de cacao.</p>
+                                <div class="producto-pie">
+                                    <span class="precio">$12.000</span>
+                                    <button class="btn btn-agregar" type="button">Agregar</button>
+                                </div>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <aside id="pedido" class="pedido" aria-label="Resumen del pedido">
+                        <h3>Mi pedido</h3>
+                        <ul id="lista-pedido" class="lista-pedido"></ul>
+                        <p id="pedido-vacio" class="pedido-vacio">Aún no has agregado productos.</p>
+                        <p class="total">Total: <strong id="total-pedido">$0</strong></p>
+                        <div class="grupo-botones">
+                            <button id="btn-confirmar" class="btn btn-principal" type="button">Confirmar pedido</button>
+                            <button id="btn-vaciar" class="btn btn-secundario" type="button">Vaciar</button>
+                        </div>
+                        <p id="mensaje-pedido" class="mensaje-pedido" aria-live="polite"></p>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== RESERVAS (FORMULARIO) ===================== -->
+        <section id="reservas" class="seccion">
+            <div class="contenedor reservas-grid">
+                <div class="reservas-info">
+                    <h2>Reserva tu mesa</h2>
+                    <p class="subtitulo">Completa el formulario y confirmaremos tu reserva.</p>
+                    <ul class="lista-datos">
+                        <li><img src="recursos/iconos/reloj.svg" alt="" width="32" height="32"> Lunes a domingo, 8:00 a. m. a 8:00 p. m.</li>
+                        <li><img src="recursos/iconos/ubicacion.svg" alt="" width="32" height="32"> Calle 10 # 5-20, Centro</li>
+                        <li><img src="recursos/iconos/telefono.svg" alt="" width="32" height="32"> 300 123 4567</li>
+                    </ul>
+                </div>
+
+                <form id="form-reserva" class="formulario" novalidate>
+                    <div class="campo">
+                        <label for="nombre">Nombre completo</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Ej: Ana María Pérez" autocomplete="name">
+                        <small class="error" id="error-nombre"></small>
+                    </div>
+
+                    <div class="fila">
+                        <div class="campo">
+                            <label for="correo">Correo electrónico</label>
+                            <input type="email" id="correo" name="correo" placeholder="correo@ejemplo.com" autocomplete="email">
+                            <small class="error" id="error-correo"></small>
+                        </div>
+                        <div class="campo">
+                            <label for="telefono">Celular</label>
+                            <input type="tel" id="telefono" name="telefono" placeholder="3001234567" inputmode="numeric" maxlength="10" autocomplete="tel">
+                            <small class="error" id="error-telefono"></small>
+                        </div>
+                    </div>
+
+                    <div class="fila">
+                        <div class="campo">
+                            <label for="fecha">Fecha</label>
+                            <input type="date" id="fecha" name="fecha">
+                            <small class="error" id="error-fecha"></small>
+                        </div>
+                        <div class="campo">
+                            <label for="hora">Hora</label>
+                            <select id="hora" name="hora">
+                                <option value="">Selecciona una hora</option>
+                            </select>
+                            <small class="error" id="error-hora"></small>
+                        </div>
+                        <div class="campo">
+                            <label for="personas">Personas</label>
+                            <input type="number" id="personas" name="personas" min="1" max="10" value="2">
+                            <small class="error" id="error-personas"></small>
+                        </div>
+                    </div>
+
+                    <fieldset class="campo">
+                        <legend>Zona preferida</legend>
+                        <label class="opcion"><input type="radio" name="zona" value="Interior" checked> Interior</label>
+                        <label class="opcion"><input type="radio" name="zona" value="Terraza"> Terraza</label>
+                    </fieldset>
+
+                    <div class="campo">
+                        <label for="mensaje">Comentarios (opcional)</label>
+                        <textarea id="mensaje" name="mensaje" rows="3" maxlength="150" placeholder="Celebración, alergias, silla para bebé..."></textarea>
+                        <small class="contador-texto"><span id="contador-mensaje">0</span>/150</small>
+                    </div>
+
+                    <div class="campo">
+                        <label class="opcion"><input type="checkbox" id="terminos" name="terminos"> Acepto el tratamiento de mis datos para gestionar la reserva.</label>
+                        <small class="error" id="error-terminos"></small>
+                    </div>
+
+                    <div class="grupo-botones">
+                        <button type="submit" class="btn btn-principal">Reservar</button>
+                        <button type="reset" class="btn btn-secundario" id="btn-limpiar">Limpiar</button>
+                    </div>
+
+                    <div id="respuesta-reserva" class="respuesta" role="status" aria-live="polite"></div>
+                </form>
+            </div>
+        </section>
+
+        <!-- ===================== PREGUNTAS FRECUENTES ===================== -->
+        <section id="preguntas" class="seccion seccion-alterna">
+            <div class="contenedor angosto">
+                <h2>Preguntas frecuentes</h2>
+
+                <article class="faq">
+                    <button class="faq-pregunta" type="button" aria-expanded="false">¿Tienen opciones sin lactosa?</button>
+                    <div class="faq-respuesta"><p>Sí, podemos preparar tus bebidas con leche deslactosada o de avena sin costo adicional.</p></div>
+                </article>
+                <article class="faq">
+                    <button class="faq-pregunta" type="button" aria-expanded="false">¿Puedo llevar mi mascota?</button>
+                    <div class="faq-respuesta"><p>Las mascotas son bienvenidas en la terraza.</p></div>
+                </article>
+                <article class="faq">
+                    <button class="faq-pregunta" type="button" aria-expanded="false">¿Cómo funcionan las reservas?</button>
+                    <div class="faq-respuesta"><p>Llena el formulario de reservas. Mantenemos tu mesa durante 15 minutos después de la hora elegida.</p></div>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===================== PIE DE PÁGINA ===================== -->
+    <footer id="pie">
+        <div class="contenedor pie-grid">
+            <div>
+                <p class="pie-marca">Café del Páramo</p>
+                <p>Café de especialidad, hecho con calma.</p>
+            </div>
+            <nav aria-label="Enlaces del pie de página">
+                <a href="#inicio">Inicio</a>
+                <a href="#menu">Menú</a>
+                <a href="#reservas">Reservas</a>
+            </nav>
+            <p class="pie-copy">© <span id="anio">2026</span> Café del Páramo. Proyecto académico de Programación Web I.</p>
+        </div>
+    </footer>
+
+    <button id="btn-subir" class="btn-subir" type="button" aria-label="Volver arriba" hidden>↑</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
